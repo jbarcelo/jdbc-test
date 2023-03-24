@@ -28,10 +28,8 @@ public class Application {
     }
  
     private static void initDatabaseConnectionPool() {
-       dataSource = new HikariDataSource();
-       dataSource.setJdbcUrl("jdbc:mariadb://localhost:3306/jdbc_demo");
-       dataSource.setUsername("example-user");
-       dataSource.setPassword("my_cool_secret");
+       HikariConfig hikariConfig = new HikariConfig("/database.properties");
+       dataSource = new HikariDataSource(hikariConfig);
     }
  
     private static void closeDatabaseConnectionPool() {
